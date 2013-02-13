@@ -23,12 +23,11 @@ Just copy the folder, and it is ready to go. PDFx got all dependencies bundled. 
 
 ### Usage ###
 
-Put your scanTailor project file or processed TIF files inside 'in' folder. PDFx will automatically create your PDF file with or without OCR inside 'out' folder.
+Put your scanTailor project file or processed TIF files inside 'in' folder and run PDFx.cmd, PDFx will automatically create your PDF file with or without OCR inside 'out' folder.
 
 If the input file is a ScanTailor project file, PDFx will do ScanTailoring for you and OCR is optional, which you can choose from the prompt.
 
 ### Downloads and Support ###
 
-* Please submit issues here (https://github.com/nishad/PDFx/issues)
-
-* To download a bleeding edge (https://github.com/nishad/PDFx/archive/master.zip)
+* [Please submit issues here] (https://github.com/nishad/PDFx/issues)
+* [To download a bleeding edge] (https://github.com/nishad/PDFx/archive/master.zip)
