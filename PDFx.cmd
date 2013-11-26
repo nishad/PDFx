@@ -1,8 +1,10 @@
 echo off
-set version=1.25
+set version=1.3.1
 TITLE Lime PDFx Utility
 
 REM Here we set paths for portable use
+set TMP=%~dp0temp
+set TEMP=%~dp0temp
 Set path=%~dp0bin;%~dp0bin\ImageMagick;%~dp0bin\Tesseract\;%~dp0bin\ScanTailor\
 Set TESSDATA_PREFIX=%~dp0bin\Tesseract\
 Set MAGICK_HOME=%~dp0bin\ImageMagick
@@ -22,7 +24,7 @@ chgcolor B
 echoj " PDF Creator Application for Windows" $0a $0a
 chgcolor A
 echoj $09 "Created for Dyuthi Project of CUSAT. Relesed under GNU GPL v3" $0a
-echoj $09 "(c) 2012 Lime Consultants [www.limeconsultants.com]" $0a $0a
+echoj $09 "(c) 2013 Lime Consultants [www.limeconsultants.com]" $0a $0a
 chgcolor D
 echoj $09 "Put your scanTailor project file or processed TIF files" $0a $09 "insie 'in' folder. PDFx will automatically create your PDF file"  $0a $09 "with or without OCR inside 'out' folder." $0a
 chgcolor 7
@@ -34,6 +36,7 @@ IF NOT EXIST "%~dp0in" MKDIR "%~dp0in"
 IF NOT EXIST "%~dp0completed" MKDIR "%~dp0completed"
 IF NOT EXIST "%~dp0out" MKDIR "%~dp0out"
 IF NOT EXIST "%~dp0log" MKDIR "%~dp0log"
+IF NOT EXIST "%~dp0temp" MKDIR "%~dp0temp"
 
 goto menu
 
@@ -130,6 +133,9 @@ REM Here we create PDF
   move out.pdf %~dp0OUT > NUL 2>&1
   echo.
   cd %~dp0
+  echo Process Completed, elapsed time is
+  timer /nologo /s
+  echo.
   goto dorename
 
 
@@ -154,11 +160,11 @@ REM Here we rename output pdf
   )
 
 
-REM Here we finsh te process.
+REM Here we finish the process.
 :doend
   echo.
-  echo Process Completed elapsed time is
-  timer /nologo /s
+  busybox rm -r %~dp0temp
+  cd ..
   echo.
   pause
   
